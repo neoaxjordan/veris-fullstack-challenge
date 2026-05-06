@@ -1,0 +1,13 @@
+-- 1. Crear el usuario (Schema) para el proyecto
+ALTER SESSION SET "_ORACLE_SCRIPT" = true;
+
+CREATE USER VERIS_USER IDENTIFIED BY "VerisTest2026"
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp;
+
+-- 2. Otorgar permisos necesarios para desarrollo
+GRANT CONNECT, RESOURCE, CREATE VIEW, CREATE SEQUENCE TO VERIS_USER;
+GRANT UNLIMITED TABLESPACE TO VERIS_USER;
+
+-- 3. Cambiar al contexto del nuevo usuario
+ALTER SESSION SET CURRENT_SCHEMA = VERIS_USER;
